@@ -22,7 +22,9 @@ public class ConsoleWriterImpl implements ConsoleWriter {
 
     @Override
     public void writeTests(Test[] tests) {
-        System.out.println("Tests list: " + Arrays.toString(tests));
+        System.out.println("Tests list: ");
+        Arrays.stream(tests)
+                .forEach(System.out::println);
     }
 
     @Override

@@ -39,6 +39,7 @@ public class TestRepositoryImpl implements TestRepository {
     public List<String> getAllSubjects() {
         return Arrays.stream(tests)
                 .map(Test::getSubject)
+                .distinct()
                 .collect(Collectors.toList());
     }
 
@@ -46,6 +47,7 @@ public class TestRepositoryImpl implements TestRepository {
     public List<String> getAllForms() {
         return Arrays.stream(tests)
                 .map(Test::getForm)
+                .distinct()
                 .collect(Collectors.toList());    }
 
     private void init() {
