@@ -2,53 +2,21 @@ package ua.com.zinchenko.persistence;
 
 import ua.com.zinchenko.service.model.Test;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
-public class TestRepositoryImpl implements TestRepository {
+public class InMemoryTestDataGenerator implements TestDataGenerator {
 
     private final Test[] tests = new Test[10];
 
-    public TestRepositoryImpl() {
+    public InMemoryTestDataGenerator() {
         init();
     }
 
-
-    @Override
-    public Test[] getAllTests() {
+    public Test[] getData() {
         return tests;
     }
 
-    @Override
-    public Test[] getTestsBySubject(String subject) {
-        return Arrays.stream(tests)
-                .filter(t -> t.getSubject().equalsIgnoreCase(subject))
-                .toArray(Test[]::new);
-    }
-
-    @Override
-    public Test[] getTestsByForm(String form) {
-        return Arrays.stream(tests)
-                .filter(t -> t.getForm().equalsIgnoreCase(form))
-                .toArray(Test[]::new);
-    }
-
-    @Override
-    public List<String> getAllSubjects() {
-        return Arrays.stream(tests)
-                .map(Test::getSubject)
-                .distinct()
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public List<String> getAllForms() {
-        return Arrays.stream(tests)
-                .map(Test::getForm)
-                .distinct()
-                .collect(Collectors.toList());    }
 
     private void init() {
         tests[0] = new Test(
