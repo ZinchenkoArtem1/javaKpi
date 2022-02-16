@@ -44,6 +44,7 @@ public class ConsoleWriterImpl implements ConsoleWriter {
 
     @Override
     public void writeExceptionMessage(String message) {
+        System.out.println("---EXCEPTION---");
         System.out.println(message);
     }
 }
