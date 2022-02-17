@@ -18,5 +18,6 @@ public class ConsoleReaderImpl implements ConsoleReader {
     @Override
     public String getFormName() {
         System.out.print("Input form name for search: ");
-        return new Scanner(System.in).nextLine();    }
+        return new Scanner(System.in).nextLine();
+    }
 }

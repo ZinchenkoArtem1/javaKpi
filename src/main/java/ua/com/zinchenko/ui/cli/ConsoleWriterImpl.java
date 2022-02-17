@@ -28,13 +28,13 @@ public class ConsoleWriterImpl implements ConsoleWriter {
     }
 
     @Override
-    public void writeSubjects(List<String> subjects) {
-        System.out.println("Subjects list: " + subjects);
+    public void writeSubjects(String[] subjects) {
+        System.out.println("Subjects list: " + Arrays.toString(subjects));
     }
 
     @Override
-    public void writeForms(List<String> forms) {
-        System.out.println("Forms list: " + forms);
+    public void writeForms(String[] forms) {
+        System.out.println("Forms list: " + Arrays.toString(forms));
     }
 
     @Override

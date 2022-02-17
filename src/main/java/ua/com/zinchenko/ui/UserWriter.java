@@ -10,9 +10,9 @@ public interface UserWriter {
 
     void writeTests(Test[] tests);
 
-    void writeSubjects(List<String> subjects);
+    void writeSubjects(String[] subjects);
 
-    void writeForms(List<String> forms);
+    void writeForms(String[] forms);
 
     void writeExceptionMessage(String message);
 }

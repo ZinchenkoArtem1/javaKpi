@@ -58,7 +58,7 @@ class TestServiceTest {
 
     @org.junit.jupiter.api.Test
     void getAllSubjects() {
-        List<String> subjects = List.of("test1", "test2");
+        String[] subjects = new String[] {"test1", "test2"};
 
         Mockito.when(testRepository.getAllSubjects()).thenReturn(subjects);
         Assertions.assertEquals(subjects, testService.getAllSubjects());
@@ -66,7 +66,7 @@ class TestServiceTest {
 
     @org.junit.jupiter.api.Test
     void getAllForms() {
-        List<String> forms = List.of("test1", "test2");
+        String[] forms = new String[] {"test1", "test2"};
 
         Mockito.when(testRepository.getAllForms()).thenReturn(forms);
         Assertions.assertEquals(forms, testService.getAllForms());

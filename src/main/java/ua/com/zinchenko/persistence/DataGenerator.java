@@ -2,7 +2,7 @@ package ua.com.zinchenko.persistence;
 
 import ua.com.zinchenko.service.model.Test;
 
-public interface TestDataGenerator {
+public interface DataGenerator {
 
-    Test[] getData();
+    Test[] getTestsData();
 }

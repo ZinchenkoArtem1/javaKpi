@@ -4,11 +4,12 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
-import ua.com.zinchenko.persistence.TestDataGenerator;
+import ua.com.zinchenko.persistence.DataGenerator;
 import ua.com.zinchenko.persistence.TestRepository;
 import ua.com.zinchenko.persistence.TestRepositoryInMemoryImpl;
 import ua.com.zinchenko.service.model.Test;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -41,18 +42,18 @@ public class TestRepositoryTest {
 
     @org.junit.jupiter.api.Test
     void getAllSubjects() {
-        Assertions.assertEquals(List.of("Math", "Ukrainian literature"), testRepository.getAllSubjects());
+        Assertions.assertArrayEquals(new String[] {"Math", "Ukrainian literature"}, testRepository.getAllSubjects());
     }
 
     @org.junit.jupiter.api.Test
     void getAllForms() {
-        Assertions.assertEquals(List.of("ZNO", "DPA"), testRepository.getAllForms());
+        Assertions.assertArrayEquals(new String[]{"ZNO", "DPA"}, testRepository.getAllForms());
     }
 
-    private static class TestTestDataGenerator implements TestDataGenerator {
+    private static class TestTestDataGenerator implements DataGenerator {
 
         @Override
-        public Test[] getData() {
+        public Test[] getTestsData() {
 
             return new Test[]{
                     new Test(

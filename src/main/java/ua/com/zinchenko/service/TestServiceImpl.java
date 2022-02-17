@@ -29,12 +29,12 @@ public class TestServiceImpl implements TestService {
     }
 
     @Override
-    public List<String> getAllSubjects() {
+    public String[] getAllSubjects() {
         return testRepository.getAllSubjects();
     }
 
     @Override
-    public List<String> getAllForms() {
+    public String[] getAllForms() {
         return testRepository.getAllForms();
     }
 }

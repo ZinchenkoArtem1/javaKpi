@@ -1,7 +1,7 @@
 package ua.com.zinchenko;
 
-import ua.com.zinchenko.persistence.InMemoryTestDataGenerator;
-import ua.com.zinchenko.persistence.TestDataGenerator;
+import ua.com.zinchenko.persistence.InMemoryDataGenerator;
+import ua.com.zinchenko.persistence.DataGenerator;
 import ua.com.zinchenko.persistence.TestRepository;
 import ua.com.zinchenko.persistence.TestRepositoryInMemoryImpl;
 import ua.com.zinchenko.service.TestService;
@@ -18,7 +18,7 @@ public class Main {
     public static void main(String[] args) {
         ConsoleReader consoleReader = new ConsoleReaderImpl();
         ConsoleWriter consoleWriter = new ConsoleWriterImpl();
-        TestDataGenerator inMemoryDataGenerator = new InMemoryTestDataGenerator();
+        DataGenerator inMemoryDataGenerator = new InMemoryDataGenerator();
         TestRepository testRepository = new TestRepositoryInMemoryImpl(inMemoryDataGenerator);
         TestService testService = new TestServiceImpl(testRepository);
         MainController mainController = new CliMainController(consoleReader, consoleWriter, testService);

@@ -9,6 +9,6 @@ public interface TestService {
     Test[] getAllTests();
     Test[] getTestsBySubject(String subject);
     Test[] getTestsByForm(String form);
-    List<String> getAllSubjects();
-    List<String> getAllForms();
+    String[] getAllSubjects();
+    String[] getAllForms();
 }
