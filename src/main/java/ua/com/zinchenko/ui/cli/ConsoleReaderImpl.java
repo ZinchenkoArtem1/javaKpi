@@ -6,18 +6,11 @@ public class ConsoleReaderImpl implements ConsoleReader {
 
     @Override
     public int getNumberOfTaskFromMenu() {
-        return Integer.parseInt((new Scanner(System.in)).nextLine());
+        return new Scanner(System.in).nextInt();
     }
 
     @Override
-    public String getSubjectName() {
-        System.out.print("Input subject name for search: ");
-        return new Scanner(System.in).nextLine();
-    }
-
-    @Override
-    public String getFormName() {
-        System.out.print("Input form name for search: ");
+    public String getString() {
         return new Scanner(System.in).nextLine();
     }
 }

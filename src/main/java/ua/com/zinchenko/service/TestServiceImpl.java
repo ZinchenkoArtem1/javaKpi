@@ -3,7 +3,6 @@ package ua.com.zinchenko.service;
 import ua.com.zinchenko.persistence.TestRepository;
 import ua.com.zinchenko.service.model.Test;
 
-import java.util.List;
 
 public class TestServiceImpl implements TestService {
 

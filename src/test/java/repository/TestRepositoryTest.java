@@ -9,12 +9,7 @@ import ua.com.zinchenko.persistence.TestRepository;
 import ua.com.zinchenko.persistence.TestRepositoryInMemoryImpl;
 import ua.com.zinchenko.service.model.Test;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
 
-
-//we use init data from TestRepositoryImpl class for testing
 @ExtendWith(MockitoExtension.class)
 public class TestRepositoryTest {
 
@@ -42,7 +37,7 @@ public class TestRepositoryTest {
 
     @org.junit.jupiter.api.Test
     void getAllSubjects() {
-        Assertions.assertArrayEquals(new String[] {"Math", "Ukrainian literature"}, testRepository.getAllSubjects());
+        Assertions.assertArrayEquals(new String[]{"Math", "Ukrainian literature"}, testRepository.getAllSubjects());
     }
 
     @org.junit.jupiter.api.Test
@@ -60,22 +55,23 @@ public class TestRepositoryTest {
                             "ZNO",
                             "Math",
                             "1 + 1 = ?",
-                            Map.of(1, "1", 2, "2", 3, "3", 4, "4"),
-                            List.of(1)
+                            new String[]{"1", "2", "3", "4"},
+                            new Integer[]{1}
                     ),
                     new Test(
                             "ZNO",
                             "Math",
                             "3 / 0 = ?",
-                            Map.of(1, "1", 2, "2", 3, "3", 4, "can't divide by zero"),
-                            List.of(4)
+                            new String[]{"1", "2", "3", "can't divide by zero"},
+                            new Integer[]{4}
                     ),
                     new Test(
                             "DPA",
                             "Ukrainian literature",
                             "Косач - це справжнє прізвище автора твору",
-                            Map.of(1, "«Чари ночі»", 2, "«Блакитна Панна»", 3, "«Contra spem spero!»", 4, "«Момент»"),
-                            List.of(3))
+                            new String[]{"«Чари ночі»", "«Блакитна Панна»", "«Contra spem spero!»", "«Момент»"},
+                            new Integer[]{3}
+                    )
             };
         }
     }

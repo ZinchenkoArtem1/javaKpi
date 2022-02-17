@@ -2,9 +2,12 @@ package ua.com.zinchenko.ui.cli.controller;
 
 import ua.com.zinchenko.service.TestService;
 import ua.com.zinchenko.service.model.Test;
+import ua.com.zinchenko.ui.Localization;
 import ua.com.zinchenko.ui.MainController;
 import ua.com.zinchenko.ui.cli.ConsoleReader;
 import ua.com.zinchenko.ui.cli.ConsoleWriter;
+
+import java.util.Arrays;
 
 
 public class CliMainController implements MainController {
@@ -24,44 +27,39 @@ public class CliMainController implements MainController {
         boolean isWork = true;
 
         while (isWork) {
-            consoleWriter.writeMenu();
+            consoleWriter.printMessage(Localization.MENU);
 
-            try {
-                switch (consoleReader.getNumberOfTaskFromMenu()) {
-                    case 1 -> {
-                        consoleWriter.writeTests(testService.getAllTests());
+            int taskNumber = consoleReader.getNumberOfTaskFromMenu();
+
+            switch (taskNumber) {
+                case 1 -> consoleWriter.printTests(testService.getAllTests());
+                case 2 -> consoleWriter.printMessage(Arrays.toString(testService.getAllSubjects()));
+                case 3 -> consoleWriter.printMessage(Arrays.toString(testService.getAllForms()));
+                case 4 -> {
+                    consoleWriter.printMessage(Localization.GET_SUBJECT_FROM_PLAYER);
+                    String subject = consoleReader.getString();
+                    Test[] tests = testService.getTestsBySubject(subject);
+                    if (tests.length == 0) {
+                        consoleWriter.printMessage(Localization.NO_TEST_FOUND_WITH_SUBJECT + subject);
+                    } else {
+                        consoleWriter.printTests(tests);
                     }
-                    case 2 -> {
-                        consoleWriter.writeSubjects(testService.getAllSubjects());
-                    }
-                    case 3 -> {
-                        consoleWriter.writeForms(testService.getAllForms());
-                    }
-                    case 4 -> {
-                        String subject = consoleReader.getSubjectName();
-                        Test[] tests = testService.getTestsBySubject(subject);
-                        if(tests.length == 0) {
-                            consoleWriter.writeExceptionMessage("No tests were found with the subject: " + subject);
-                        } else {
-                            consoleWriter.writeTests(tests);
-                        }
-                    }
-                    case 5 -> {
-                        String form = consoleReader.getFormName();
-                        Test[] tests = testService.getTestsByForm(form);
-                        if(tests.length == 0) {
-                            consoleWriter.writeExceptionMessage("No tests were found with the form: " + form);
-                        } else {
-                            consoleWriter.writeTests(tests);
-                        }                    }
-                    case 6 -> {
-                        consoleWriter.writeEndProgram();
-                        isWork = false;
-                    }
-                    default -> consoleWriter.writeExceptionMessage("You must input 1 or 6 number");
                 }
-            } catch (NumberFormatException e) {
-                consoleWriter.writeExceptionMessage("You must input 1 or 6 number");
+                case 5 -> {
+                    consoleWriter.printMessage(Localization.GET_FORM_FROM_PLAYER);
+                    String form = consoleReader.getString();
+                    Test[] tests = testService.getTestsByForm(form);
+                    if (tests.length == 0) {
+                        consoleWriter.printMessage(Localization.NO_TEST_FOUND_WITH_FORM + form);
+                    } else {
+                        consoleWriter.printTests(tests);
+                    }
+                }
+                case 6 -> {
+                    consoleWriter.printMessage(Localization.END_OF_PROGRAM_WORK);
+                    isWork = false;
+                }
+                default -> consoleWriter.printMessage(Localization.BAD_TASK_NUMBER_INPUT);
             }
         }
 
