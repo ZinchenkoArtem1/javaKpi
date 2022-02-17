@@ -1,36 +1,21 @@
 package ua.com.zinchenko.service.model;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.Arrays;
 
 public class Test {
 
     private String form;
     private String subject;
     private String question;
-    private final Map<Integer, String> answerOptions;
-    private final List<Integer> correctAnswers;
+    private String[] answerOptions;
+    private Integer[] correctAnswerNumbers;
 
-    public Test(String form, String subject, String question, Map<Integer, String> answerOptions, List<Integer> correctAnswers) {
+    public Test(String form, String subject, String question, String[] answerOptions, Integer[] correctAnswerNumbers) {
         this.form = form;
         this.subject = subject;
         this.question = question;
         this.answerOptions = answerOptions;
-        this.correctAnswers = correctAnswers;
-    }
-
-    public Test(String form, String subject, String question) {
-        this();
-        this.form = form;
-        this.subject = subject;
-        this.question = question;
-    }
-
-    public Test() {
-        answerOptions = new HashMap<>();
-        correctAnswers = new ArrayList<>();
+        this.correctAnswerNumbers = correctAnswerNumbers;
     }
 
     public String getForm() {
@@ -60,12 +45,22 @@ public class Test {
         return this;
     }
 
-    public Map<Integer, String> getAnswerOptions() {
+    public String[] getAnswerOptions() {
         return answerOptions;
     }
 
-    public List<Integer> getCorrectAnswers() {
-        return correctAnswers;
+    public Test setAnswerOptions(String[] answerOptions) {
+        this.answerOptions = answerOptions;
+        return this;
+    }
+
+    public Integer[] getCorrectAnswerNumbers() {
+        return correctAnswerNumbers;
+    }
+
+    public Test setCorrectAnswerNumbers(Integer[] correctAnswerNumbers) {
+        this.correctAnswerNumbers = correctAnswerNumbers;
+        return this;
     }
 
     @Override
@@ -74,8 +69,8 @@ public class Test {
                 "form='" + form + '\'' +
                 ", subject='" + subject + '\'' +
                 ", question='" + question + '\'' +
-                ", answerOptions=" + answerOptions +
-                ", correctAnswers=" + correctAnswers +
+                ", answerOptions=" + Arrays.toString(answerOptions) +
+                ", correctAnswers=" + Arrays.toString(correctAnswerNumbers) +
                 '}';
     }
 }

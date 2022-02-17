@@ -2,70 +2,78 @@ package ua.com.zinchenko.persistence;
 
 import ua.com.zinchenko.service.model.Test;
 
-import java.util.List;
-import java.util.Map;
-
 public class InMemoryDataGenerator implements DataGenerator {
 
-    private static final Test[] DATA_OF_TESTS = new Test[] {
+    private static final Test[] DATA_OF_TESTS = new Test[]{
             new Test(
                     "ZNO",
                     "Math",
                     "1 + 1 = ?",
-                    Map.of(1, "1", 2, "2", 3, "3", 4, "4"),
-                    List.of(1)
+                    new String[]{"1", "2", "3", "4"},
+                    new Integer[]{1}
             ),
             new Test(
                     "ZNO",
                     "Math",
                     "3 / 0 = ?",
-                    Map.of(1, "1", 2, "2", 3, "3", 4, "can't divide by zero"),
-                    List.of(4)
+                    new String[]{"1", "2", "3", "can't divide by zero"},
+                    new Integer[]{4}
             ),
             new Test(
                     "ZNO",
                     "Math",
-                    "2 + 3 = ?", Map.of(1, "1", 2, "5", 3, "3", 4, "4"),
-                    List.of(2)
+                    "2 + 3 = ?",
+                    new String[]{"1", "5", "3", "4"},
+                    new Integer[]{2}
             ),
             new Test(
                     "ZNO",
                     "Ukrainian literature",
                     "Косач - це справжнє прізвище автора твору",
-                    Map.of(1, "«Чари ночі»", 2, "«Блакитна Панна»", 3, "«Contra spem spero!»", 4, "«Момент»"),
-                    List.of(3)
+                    new String[]{"«Чари ночі»", "«Блакитна Панна»", "«Contra spem spero!»", "«Момент»"},
+                    new Integer[]{3}
             ),
             new Test(
-                    "ZNO", "Ukrainian literature",
+                    "ZNO",
+                    "Ukrainian literature",
                     "Трагічні події серпня 1919 року зображені у творі",
-                    Map.of(1, "«За мить щастя»", 2, "«Подвійне коло»", 3, "«Земля»", 4, "«Україна в огні»"),
-                    List.of(2)
+                    new String[]{"«За мить щастя»", "«Подвійне коло»", "«Земля»", "«Україна в огні»"},
+                    new Integer[]{2}
             ),
             new Test(
-                    "DPA", "Math", "10 + 10 = ?", Map.of(1, "1", 2, "20", 3, "3", 4, "4"),
-                    List.of(2)
+                    "DPA",
+                    "Math",
+                    "10 + 10 = ?",
+                    new String[]{"1", "20", "3", "4"},
+                    new Integer[]{2}
             ),
             new Test(
-                    "DPA", "Math", "2 * 3 = ?", Map.of(1, "1", 2, "5", 3, "6", 4, "4"),
-                    List.of(3)
+                    "DPA",
+                    "Math",
+                    "2 * 3 = ?",
+                    new String[]{"1", "5", "6", "4"},
+                    new Integer[]{3}
             ),
             new Test(
-                    "DPA", "Math", "3 / 2 = ?", Map.of(1, "1", 2, "5", 3, "3", 4, "1.5"),
-                    List.of(4)
+                    "DPA",
+                    "Math",
+                    "3 / 2 = ?",
+                    new String[]{"1", "5", "3", "1.5"},
+                    new Integer[]{4}
             ),
             new Test(
                     "DPA",
                     "Ukrainian literature",
                     "Життя українців Зеленого Клину змалював у своєму творі",
-                    Map.of(1, "Григір Тютюнник", 2, "Юрій Яновський", 3, "Володимир Винниченко", 4, "Іван Багряний"),
-                    List.of(4)
+                    new String[]{"Григір Тютюнник", "Юрій Яновський", "Володимир Винниченко", "Іван Багряний"},
+                    new Integer[]{4}
             ),
             new Test(
                     "DPA",
                     "Ukrainian literature",
                     "У повісті «Маруся» кохання з першого погляду Василя й Марусі є - ?",
-                    Map.of(1, "експозицією", 2, "зав'язкою", 3, "розвитком дії", 4, "кульмінацією"),
-                    List.of(2)
+                    new String[]{"експозицією", "зав'язкою", "розвитком дії", "кульмінацією"},
+                    new Integer[]{2}
             )
     };
 
